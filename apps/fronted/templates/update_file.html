@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="">
+        <input type="hidden" name="_method" value="PUT">
+        file name:<input type="text" readonly="readonly" name="fileName" id="fileName" value="{{ context.fileName }}"><br>
+        content:<input type="text" id="content" name="content" value="{{ context.content }}"><br>
+        msg:<input type="text" id="msg" name="msg" value="update {{ context.fileName }} file"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

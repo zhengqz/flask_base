@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+"""
+    Date: 2016/9/28
+    Time: 17:22
+"""
+
+import pygit2
+
+repo = None
+
+
+def init_bare(git_path):
+    global repo
+    repo = pygit2.init_repository(git_path, bare=True)
+
+
+def create_blob(content):
+    blob = repo.create_blob(content)
+    return blob
+
+
+def git_add(fileName, content=""):
+    fileName = fileName or "new.txt"
+    repo.index.add(pygit2.IndexEntry(fileName, create_blob(content), pygit2.GIT_FILEMODE_BLOB))
+
+
+def git_commit(branch, commit_msg):
+    ci = repo.create_commit(branch, repo.default_signature, repo.default_signature, commit_msg, repo.index.write_tree(),
+                            [])
+
+def add_big_file():
+    blob_oid = repo.create_blob("content")
+    builder = repo.TreeBuilder()
+    builder.insert("file", blob_oid, pygit2.GIT_FILEMODE_BLOB)
+    tree_oid = builder.write()
+
+    repo.create_commit('HEAD', repo.default_signature, repo.default_signature, tree_oid,[])

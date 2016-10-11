@@ -1,0 +1,21 @@
+import os.path
+
+BASE_DIR = os.path.dirname(__file__)
+DEBUG = True
+SECRET_KEY = 'aa'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///%s/test.db' % BASE_DIR
+CELERY_BROKER_URL = 'amqp://guest:guest@192.168.8.29:5672//'
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+SECURITY_POST_LOGIN_VIEW = '/login'
+SECURITY_PASSWORD_HASH = 'plaintext'
+SECURITY_PASSWORD_SALT = 'password_salt'
+SECURITY_REMEMBER_SALT = 'remember_salt'
+SECURITY_RESET_SALT = 'reset_salt'
+SECURITY_RESET_WITHIN = '5 days'
+SECURITY_CONFIRM_WITHIN = '5 days'
+SECURITY_SEND_REGISTER_EMAIL = False
+GITLAB_HOST = "http://192.168.8.29/api/v3"
+PRIVATE_TOKEN = "c2gJzTTJysjj7xTNY4K8"
+PROJ_ID = 2
+
+DB_FILE = "test.db"
